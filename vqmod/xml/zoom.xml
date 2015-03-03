@@ -1,0 +1,41 @@
+<modification>
+	<id>Imagw zoom</id>
+	<version>1.5.4</version>
+	<vqmver>2.1.6</vqmver>
+	<author>Bogdan-Ioan BRUDIU</author>
+	<file name="catalog/view/theme/*/template/product/product.tpl">
+
+		<operation>
+
+			<search position="replace"><![CDATA[href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"]]></search>
+
+			<add><![CDATA[href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"  id="zoom1" class = 'cloud-zoom' rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4"]]></add>
+
+		</operation>
+		<operation>
+
+			<search position="replace"><![CDATA[ <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox" rel="colorbox"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>]]></search>
+
+			<add><![CDATA[<a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: '<?php echo $image['middle']; ?>' "><img class="zoom-tiny-image" src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>"></a>]]></add>
+
+		</operation>
+
+	</file>
+
+<file name="catalog/view/theme/*/template/common/header.tpl">
+
+		<operation>
+
+			<search position="before"><![CDATA[<?php foreach ($scripts as $script) { ?>]]></search>
+
+			<add><![CDATA[<link href="catalog/view/theme/<?php echo $this->config->get('config_template'); ?>/stylesheet/cloud-zoom.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="catalog/view/theme/<?php echo $this->config->get('config_template'); ?>/js/cloud-zoom.1.0.2.min.js"></script>]]></add>
+
+		</operation>
+
+	</file>
+	
+
+
+
+</modification>
